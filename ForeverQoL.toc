@@ -1,0 +1,27 @@
+﻿# Both interface numbers confirmed in-game via:
+#   /run print(select(4, GetBuildInfo()))
+# 11509 = Classic Era (1.15.9), 16001 = WoW Forever (1.60.1).
+# (AtlasLoot Forever's filenames use 11601, but that's their own naming
+# convention -- the client itself reports 16001.)
+## Interface: 11509, 16001
+## Title: ForeverQoL
+## Notes: Quality-of-life automation for WoW Forever -- auto repair, junk selling, mail, quests, invites and more. Modular, everything toggleable.
+## Author: Spacechicken
+## Version: 1.0.0
+## SavedVariables: ForeverQoLDB
+
+# Core must load first (it defines the module registry), UI must load last
+# (it builds the settings panel from whatever registered in between).
+Core.lua
+
+Modules\Vendor.lua
+Modules\Mail.lua
+Modules\Quests.lua
+Modules\Social.lua
+Modules\Loot.lua
+Modules\Convenience.lua
+Modules\Chat.lua
+Modules\Tooltips.lua
+Modules\Frames.lua
+
+UI.lua
