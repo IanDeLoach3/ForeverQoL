@@ -7,6 +7,23 @@ function ns.Print(msg)
     print(ns.ACCENT_CHAT .. "[FQoL]|r " .. msg)
 end
 
+-- Remember the last few Lua errors that mention this addon so the bug report
+-- window can include them. The previous error handler still runs afterward,
+-- so errors show up exactly as they did before.
+ns.recentErrors = {}
+local previousErrorHandler = geterrorhandler()
+seterrorhandler(function(msg)
+    if type(msg) == "string" and msg:find(ADDON_NAME, 1, true) then
+        table.insert(ns.recentErrors, date("%H:%M:%S") .. " " .. msg:sub(1, 400):gsub("[\r\n]+", " | "))
+        while #ns.recentErrors > 5 do
+            table.remove(ns.recentErrors, 1)
+        end
+    end
+    if previousErrorHandler then
+        return previousErrorHandler(msg)
+    end
+end)
+
 -- ===== Module registry =====
 -- Every feature registers itself here with a key, a category, and a default.
 -- UI.lua loads LAST and builds the entire settings panel from whatever
@@ -120,9 +137,19 @@ SlashCmdList["FOREVERQOL"] = function(msg)
         if ns.ShowChatCopy then
             ns.ShowChatCopy()
         end
+    elseif cmd == "bug" or cmd == "report" then
+        if ns.ShowReport then
+            ns.ShowReport("bug")
+        end
+    elseif cmd == "suggest" or cmd == "suggestion" or cmd == "idea" then
+        if ns.ShowReport then
+            ns.ShowReport("suggest")
+        end
     elseif cmd == "help" then
         ns.Print("|cffffff00/fqol|r - open settings")
         ns.Print("|cffffff00/fqol copy|r - open the chat copy window")
+        ns.Print("|cffffff00/fqol bug|r - report a bug")
+        ns.Print("|cffffff00/fqol suggest|r - suggest a feature")
     else
         if ns.ToggleSettings then
             ns.ToggleSettings()

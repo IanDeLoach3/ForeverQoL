@@ -7,7 +7,7 @@
 ## Title: ForeverQoL
 ## Notes: Quality-of-life automation for WoW Forever -- auto repair, junk selling, mail, quests, invites and more. Modular, everything toggleable.
 ## Author: Spacechicken
-## Version: 1.0.0
+## Version: 1.1.0
 ## SavedVariables: ForeverQoLDB
 
 # Core must load first (it defines the module registry), UI must load last
@@ -23,5 +23,7 @@ Modules\Convenience.lua
 Modules\Chat.lua
 Modules\Tooltips.lua
 Modules\Frames.lua
+
+Report.lua
 
 UI.lua

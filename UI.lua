@@ -230,6 +230,36 @@ local function BuildPanel()
         y = y + 10
     end
 
+    -- Feedback: opens the bug report / suggestion window (Report.lua).
+    local fbHeader = content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    fbHeader:SetPoint("TOPLEFT", 0, -y)
+    fbHeader:SetText("|cff33ccffFeedback|r")
+    y = y + 24
+
+    local bugBtn = CreateFrame("Button", nil, content, "UIPanelButtonTemplate")
+    bugBtn:SetSize(150, 24)
+    bugBtn:SetPoint("TOPLEFT", 6, -y)
+    bugBtn:SetText("Report a bug")
+    bugBtn:SetScript("OnClick", function()
+        ns.ShowReport("bug")
+    end)
+
+    local suggestBtn = CreateFrame("Button", nil, content, "UIPanelButtonTemplate")
+    suggestBtn:SetSize(150, 24)
+    suggestBtn:SetPoint("LEFT", bugBtn, "RIGHT", 8, 0)
+    suggestBtn:SetText("Suggest a feature")
+    suggestBtn:SetScript("OnClick", function()
+        ns.ShowReport("suggest")
+    end)
+    y = y + 32
+
+    local fbHint = content:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
+    fbHint:SetPoint("TOPLEFT", 6, -y)
+    fbHint:SetWidth(width - 12)
+    fbHint:SetJustifyH("LEFT")
+    fbHint:SetText("Builds a ready-to-paste report with your game version and any recent ForeverQoL errors. No character info is included.")
+    y = y + 34
+
     content:SetSize(width, math.max(y, 1))
     UpdateScrollbar()
 end

@@ -70,4 +70,4 @@ Tooltips
 
 ## Feedback
 
-Found something broken, or want a feature added? Open a ticket on the CurseForge project page.
+Found something broken, or want a feature added? Type `/fqol bug` to report a bug or `/fqol suggest` to suggest a feature (or use the buttons at the bottom of the settings panel). It builds a ready-to-paste report with your game version, enabled features, and any recent ForeverQoL errors (no character info), plus a link to open an issue on GitHub: https://github.com/IanDeLoach3/ForeverQoL/issues. You can also leave a comment on the CurseForge project page.
