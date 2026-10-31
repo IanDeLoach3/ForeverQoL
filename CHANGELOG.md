@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.0
+- New: item tooltips show what each stat is worth to your character, e.g. `+7 Agility (+7 AP, +0.54% Crit)`. Covers Strength, Agility, Stamina and Intellect, adjusted for your class and level. Works in comparison tooltips and chat links too. On by default; toggle it under Tooltips.
+
 ## 1.1.0
 - New: bug report and feature suggestion window. Open it with `/fqol bug` or `/fqol suggest`, or the buttons at the bottom of the settings panel. It builds a ready-to-paste report (your description, game version, enabled features, and any recent ForeverQoL Lua errors, with no character info) and shows the GitHub issues link to paste it into.
 
